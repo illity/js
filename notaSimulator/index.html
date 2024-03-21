@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            color: cyan;
+            background-color: black;
+            font-size: xx-large;
+        }
+
+        form>div {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        input {
+            border: none;
+            width: 32px;
+            background-color: black;
+            -webkit-appearance: textfield;
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+        button {
+            color: white;
+            border: none;
+        }
+        label {
+            color: lightcyan;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="nota">
+        <h1>A média calculada é:
+            <span id="nota">5</span>
+        </h1>
+        <h1>
+            Pontos:
+            <span id="pontos">0</span>
+            /82.00
+        </h1>
+
+    </div>
+    <form action="ev=>ev.preventDefault()" id="notas">
+        <h2>PF</h2>
+        <div>
+            <div>
+                <label for="5">Notas 5</label>
+                <div class="input">
+                    <button>-</button>
+                    <input type="number" value="0">
+                    <button>+</button>
+                </div>
+            </div>
+            <div>
+                <label for="4">Notas 4</label>
+                <div class="input">
+                    <button>-</button>
+                    <input type="number" value="0">
+                    <button>+</button>
+                </div>
+            </div>
+            <div>
+                <label for="3">Notas 3</label>
+                <div class="input">
+                    <button>-</button>
+                    <input type="number" value="0">
+                    <button>+</button>
+                </div>
+            </div>
+            <div>
+                <label for="2">Notas 2</label>
+                <div class="input">
+                    <button>-</button>
+                    <input type="number" value="0">
+                    <button>+</button>
+                </div>
+            </div>
+            <div>
+                <label for="1">Notas 1</label>
+                <div class="input">
+                    <button>-</button>
+                    <input type="number" value="0">
+                    <button>+</button>
+                </div>
+            </div>
+        </div>
+        <h2>PJ</h2>
+        <div>
+            <div>
+                <label for="5pj">Notas 5</label>
+                <div class="input">
+                    <button>-</button>
+                    <input type="number" value="0">
+                    <button>+</button>
+                </div>
+            </div>
+            <div>
+                <label for="4pj">Notas 4</label>
+                <div class="input">
+                    <button>-</button>
+                    <input type="number" value="0">
+                    <button>+</button>
+                </div>
+            </div>
+            <div>
+                <label for="3pj">Notas 3</label>
+                <div class="input">
+                    <button>-</button>
+                    <input type="number" value="0">
+                    <button>+</button>
+                </div>
+            </div>
+            <div>
+                <label for="2pj">Notas 2</label>
+                <div class="input">
+                    <button>-</button>
+                    <input type="number" value="0">
+                    <button>+</button>
+                </div>
+            </div>
+            <div>
+                <label for="1pj">Notas 1</label>
+                <div class="input">
+                    <button>-</button>
+                    <input type="number" value="0">
+                    <button>+</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <script src="index.js"></script>
+</body>
+
+</html>
