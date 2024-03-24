@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../style.css">
+    <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root" class="h-full">
+        <div class="flex flex-col justify-between h-full">
+            <div class="text-[80px]">morse code for following char</div>
+            <div id="game" class="flex flex-col text-center flex-grow justify-center gap-32">
+                <div class="text-[80px] text-cyan-100">c</div>
+                <input type="text" class="text-[120px] text-black text-center font-extrabold">
+            </div>
+            <div class="text-[40px]">
+                elapsed time:
+                <span id="elapsed"></span>
+            </div>
+            <div class="text-[40px]">
+                last:
+                <span id="last"></span>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
