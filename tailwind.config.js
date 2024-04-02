@@ -2,7 +2,7 @@ module.exports = {
     future: {},
     purge: [],
     theme: {
-    extend: {},
+        extend: {},
     },
     variants: {},
     plugins: [],
