@@ -110,3 +110,4 @@ function checkTime(i) {
 }
 
 startTime()
+console.log('oi')
