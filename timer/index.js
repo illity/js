@@ -46,7 +46,6 @@ function getnumDiasUteis(startDate, dataFinal) {
     var arr2 = dataFinal.split('-');
     var dataAtual = new Date(arr1[0], arr1[1] - 1, arr1[2]);
     dataFinal = new Date(arr2[0], arr2[1] - 1, arr2[2]);
-    console.log(dataFinal)
     var ano_inicial = dataAtual.getFullYear();
     var ano_final = dataFinal.getFullYear();
     var ano = ano_inicial;
@@ -83,11 +82,7 @@ function getnumDiasUteis(startDate, dataFinal) {
 
 
 
-console.log('dias uteis');
 
-
-
-console.log();
 
 function startTime() {
     document.getElementById('tictac').innerHTML = document.getElementById('tictac').innerHTML === 'tic tac...' ? 'tac tic...' : 'tic tac...'
@@ -104,7 +99,6 @@ function startTime() {
     days = Math.floor(((posse - today) / 1000)).toFixed(0) / 3600 / 24
     clockElement.children[1].innerHTML = 'Faltam apenas ' + Math.floor(((posse - today) / 1000)).toFixed(0) + ' segundos'
     clockElement.children[2].innerHTML = 'Isso dá ' + days.toFixed(2) + ' dias'
-    console.log(currentDay)
     clockElement.children[3].innerHTML = 'você pode considerar que são ' + getnumDiasUteis(currentDay, '2024-6-4') + ' dias úteis'
     t = setTimeout('startTime()', 500);
 }
@@ -117,4 +111,3 @@ function checkTime(i) {
 }
 
 startTime()
-console.log('oi')
