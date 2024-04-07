@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
+
 <head>
     <meta charset="UTF-8">
     <!-- <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> -->
     <style>
-        html, body {
+        html,
+        body {
             height: 100%;
         }
     </style>
@@ -12,15 +14,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body class="flex flex-col items-center justify-around h-full bg-slate-900 text-blue-400">
-    <div class="text-center text-white font-serif flex flex-col items-center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Bras%C3%A3o_oficial_do_Imp%C3%A9rio_do_Brasil_%281822_-_1853%29.png" alt=""
-        width="150px">
-        <div class="font-bold text-5xl">
-            CAIXA ECONÔMICA E MONTE DE SOCCORRO
+    <div class="flex w-full justify-around gap-4">
+        <div class="text-center text-white font-serif flex flex-col items-center w-1/2 border border-black">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Bras%C3%A3o_oficial_do_Imp%C3%A9rio_do_Brasil_%281822_-_1853%29.png"
+                alt="" width="100px">
+            <div class="font-bold text-2xl">
+                CAIXA ECONÔMICA E MONTE DE SOCCORRO
+            </div>
+            <div class="text-xl">
+                COM GARANTIA DO GOVERNO IMPERIAL
+            </div>
         </div>
-        <div class="text-4xl">
-            COM GARANTIA DO GOVERNO IMPERIAL
+        <div class="flex flex-col text-fuchsia-500 text-center grow">
+            <div class="font-bold">Jogo do Bicho</div>
+            <ul class="text-center flex flex-col justify-around p-4 [&>*]:gap-2 rounded-lg bg-opacity-10 bg-slate-500 [&>*]:flex [&>*]:justify-between [&>*>*]:text-center" id="jogoDoBicho">
+                <li>number</li>
+                <li>number</li>
+                <li>number</li>
+                <li>number</li>
+                <li>number</li>
+            </ul>
+        </div>
+        <div class="w-1/3 text-center text-red-500 border-red-500 border">
+            <div class="text-xl">Espaço alugado</div>
+            <div class="text-opacity-60 text-inherit">Destinado à tabela do campeonato polonês</div>
+            <div>
+                <table class="w-full text-center m-auto [&>*>td]:text-center table-fixed text-red-200">
+                    <tr>
+                        <th>colocação</th>
+                        <th>time</th>
+                        <th>pontos</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Jagiellonia Bialystok</td>
+                        <td>51</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
     <iframe src="./canvas.htm" class="w-full h-64 px-16">
@@ -33,5 +66,7 @@
         <div></div>
     </div>
     <script src="index.js"></script>
+    <script src="jogoDoBicho.js"></script>
 </body>
+
 </html>

@@ -46,6 +46,7 @@ function getnumDiasUteis(startDate, dataFinal) {
     var arr2 = dataFinal.split('-');
     var dataAtual = new Date(arr1[0], arr1[1] - 1, arr1[2]);
     dataFinal = new Date(arr2[0], arr2[1] - 1, arr2[2]);
+    console.log(dataFinal)
     var ano_inicial = dataAtual.getFullYear();
     var ano_final = dataFinal.getFullYear();
     var ano = ano_inicial;
@@ -63,15 +64,21 @@ function getnumDiasUteis(startDate, dataFinal) {
         feriados.push(DataSubtrair(data_pascoa, 2).getTime());
         ano++;
     }
+    let firstDay = true;
     while (dataAtual <= dataFinal) {
-        if (dataAtual.getDay() !== 0 && dataAtual.getDay() !== 6) {
-            if (!feriados.includes(dataAtual.getTime())) {
-                numDiasUteis++;
+        if (dataAtual.getDay() !== 0 && dataAtual.getDay() !== 6 && !feriados.includes(dataAtual.getTime())) {
+            numDiasUteis++;
+        }
+        if (firstDay) {
+            //se o dia atual não for feriado ou fim de semana, então, contar as horas
+            if (dataAtual.getDay() !== 0 && dataAtual.getDay() !== 6 && !feriados.includes(dataAtual.getTime())) {
+                numDiasUteis += 1+((dataAtual - new Date())/24/3600/1000)
             }
+            firstDay = false
         }
         dataAtual = DataAdicionar(dataAtual, 1);
     }
-    return numDiasUteis;
+    return numDiasUteis.toFixed(2);
 }
 
 
@@ -91,12 +98,12 @@ function startTime() {
     var s = today.getSeconds();
     m = checkTime(m);
     s = checkTime(s);
+    const currentDay = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDate())
     const clockElement = document.getElementById('clock')
-    clockElement.children[0].innerHTML = 'Agora são ' + h + ":" + m + ":" + s;
+    clockElement.children[0].innerHTML = 'Tempo atual: ' + currentDay + ' - ' + h + ":" + m + ":" + s;
     days = Math.floor(((posse - today) / 1000)).toFixed(0) / 3600 / 24
     clockElement.children[1].innerHTML = 'Faltam apenas ' + Math.floor(((posse - today) / 1000)).toFixed(0) + ' segundos'
     clockElement.children[2].innerHTML = 'Isso dá ' + days.toFixed(2) + ' dias'
-    const currentDay = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+(today.getDay()+1)
     console.log(currentDay)
     clockElement.children[3].innerHTML = 'você pode considerar que são ' + getnumDiasUteis(currentDay, '2024-6-4') + ' dias úteis'
     t = setTimeout('startTime()', 500);
