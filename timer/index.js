@@ -71,7 +71,7 @@ function getnumDiasUteis(startDate, dataFinal) {
         if (firstDay) {
             //se o dia atual não for feriado ou fim de semana, então, contar as horas
             if (dataAtual.getDay() !== 0 && dataAtual.getDay() !== 6 && !feriados.includes(dataAtual.getTime())) {
-                numDiasUteis += 1+((dataAtual - new Date())/24/3600/1000)
+                numDiasUteis += ((dataAtual - new Date())/24/3600/1000)
             }
             firstDay = false
         }
