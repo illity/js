@@ -72,12 +72,12 @@ newChallenge()
 
 
 const input = document.querySelector('#game > input')
-input.addEventListener('keyup', (ev) => {
+document.addEventListener('keyup', (ev) => {
     if (ev.keyCode === 37) input.value += '.'
     else if (ev.keyCode === 39) input.value += '-'
     else if (ev.keyCode === 40) input.value += '.'
     else if (ev.keyCode === 38) input.value += '-'
-    
+    else if (ev.keyCode === 32) input.value = ''
     if (input.value === currentMorse) {
         input.value = ''
         newChallenge()
