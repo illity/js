@@ -1,0 +1,112 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Jacquard+24&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="font/stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .jacquard-24-regular {
+            font-family: "Jacquard 24", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .great-vibes-regular {
+            font-family: "Great Vibes", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @keyframes appear {
+            0% {
+                text-shadow: none;
+            }
+        }
+
+        @keyframes lateral {
+            0% {transform: translateX(-50%) scale(0.5)}
+
+        }
+
+        @keyframes meme {
+            0% {transform: rotate(360deg) scale(0); visibility: hidden;}
+            50% {transform: rotate(360deg) scale(0.3); visibility: hidden;
+            text-shadow: none;}
+        }
+        @keyframes around {
+            0% {transform: rotate(360deg) scale(0); visibility: hidden;}
+            25% {transform: rotate(360deg) scale(0.3); visibility: hidden;
+            text-shadow: none;}
+        }
+        @keyframes appearAroundFirst {
+            0% {transform: rotate(360deg) scale(0); visibility: hidden;}
+            25% {transform: rotate(360deg) scale(0); visibility: hidden;}
+            50% {transform: rotate(360deg) scale(0.3); visibility: hidden;
+            text-shadow: none;}
+        }
+        @keyframes appearAroundSecond {
+            0% {transform: rotate(360deg) scale(0); visibility: hidden;}
+            50% {transform: rotate(360deg) scale(0); visibility: hidden;}
+            75% {transform: rotate(360deg) scale(0.3); visibility: hidden;
+            text-shadow: none;}
+        }
+
+        .appear {
+            animation-name: appear;
+            animation-duration: 2s;
+        }
+
+        .name {
+            animation-name: around;
+            animation-duration: 4s;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            
+        }
+        .meme {
+            animation-name: meme;
+            visibility: visible;
+            animation-duration: 4s;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            
+        }
+        .teamo1 {
+            animation-name: appearAroundFirst;
+            animation-duration: 4s;
+        }
+        .teamo2 {
+            animation-name: appearAroundSecond;
+            animation-duration: 4s;
+        }
+        .bday {
+            animation-name: lateral;
+            animation-duration: 2s;
+
+        }
+
+        
+    </style>
+    <title>Feliz Aniversário!!</title>
+</head>
+
+<body>
+    <iframe width="1" height="1" src="https://www.youtube.com/embed/QHqQxW2rk8w?si=3JPUDosctx69qTV_&amp;controls=0&amp;start=5&amp;autoplay=1" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+    class="absolute left-0 top-0"></iframe>
+    <div class="flex flex-col justify-around text-center h-full items-center bg-slate-900 text-fuchsia-300 appear">
+        <span class="jacquard-24-regular text-8xl bday">Feliz Aniversário</span>
+        <img src="7_24.jpg" alt="" class="h-1/3 sight animate-bounce">
+        <span class="great-vibes-regular text-8xl">
+            <span class="name">Ellen</span>
+            <span class="meme">Monteiro</span>
+        </span>
+    </div>
+</body>
+
+</html>
