@@ -20,7 +20,28 @@ function calcularSaida(horarios, horaExtra) {
 function calcular(event) {
     event.preventDefault()
     const form = document.getElementById('formHorarios').elements
-    console.log(form);
+    if (!document.getElementById('entrada1').value) {
+        saida = document.getElementById('saida1').value
+        hh = saida.slice(0, 2)
+        mm = saida.slice(3, 5)
+        minutes = 60 * hh + +mm - 370
+        h = Math.floor(minutes / 60)
+        if (h < 10) h = '0' + h
+        m = minutes % 60
+        document.getElementById('entrada1').value = h + ':' + m
+        return
+    }
+    if (!document.getElementById('saida1').value) {
+        entrada = document.getElementById('entrada1').value
+        hh = entrada.slice(0, 2)
+        mm = entrada.slice(3, 5)
+        minutes = 60 * hh + +mm + 370
+        h = Math.floor(minutes / 60)
+        if (h < 10) h = '0' + h
+        m = minutes % 60
+        document.getElementById('saida1').value = h + ':' + m
+        return
+    }
     arr = []
     for (el of form) {
         if (el.tagName == 'INPUT') {
