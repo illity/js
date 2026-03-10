@@ -38,9 +38,9 @@ function calcular(event) {
         mm = entrada.slice(3, 5)
         minutes = 60 * hh + +mm + 370
         h = Math.floor(minutes / 60)
+        m = minutes % 60
         if (h < 10) h = '0' + h
         if (m < 10) m = '0' + m
-        m = minutes % 60
         document.getElementById('saida1').value = h + ':' + m
         return
     }
