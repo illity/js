@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora de Horas</title>
+
+  <style>
+    :root{
+      --bg: #0f172a;             /* slate-900 */
+      --panel: #111827;          /* gray-900 */
+      --panel-2: #0b1220;        /* deep panel */
+      --text: #e5e7eb;           /* gray-200 */
+      --text-muted: #9ca3af;     /* gray-400 */
+      --primary: #22d3ee;        /* cyan-400 */
+      --primary-strong: #06b6d4; /* cyan-500 */
+      --accent: #a78bfa;         /* violet-400 */
+      --ring: rgba(34, 211, 238, .45);
+      --danger: #ef4444;         /* red-500 */
+      --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
+      --radius: 14px;
+      --radius-sm: 10px;
+    }
+
+    /* Resetzinho saudável */
+    *{ box-sizing:border-box }
+    html, body { height:100% }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 800px at 10% -10%, rgba(167,139,250,.12), transparent 50%),
+        radial-gradient(900px 600px at 90% 10%, rgba(34,211,238,.10), transparent 50%),
+        linear-gradient(180deg, #0b1020 0%, #0e1428 100%);
+      color: var(--text);
+      display:grid;
+      place-items:center;
+      padding: 32px 16px;
+    }
+
+    .card{
+      width: 100%;
+      max-width: 720px;
+      background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card__header{
+      padding: 22px 22px 0;
+    }
+    .title{
+      display:flex; gap:10px; align-items:center; margin:0 0 8px 0;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .title .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--primary)) ;
+      box-shadow: 0 0 18px var(--primary);
+    }
+    .subtitle{
+      margin:0 0 18px 0; color: var(--text-muted); font-size: .95rem;
+    }
+
+    .card__body{
+      padding: 22px;
+      display:grid; gap: 18px;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 620px){
+      .row{ grid-template-columns: 1fr }
+    }
+
+    .field{
+      display:grid; gap:8px;
+      background: rgba(255,255,255,.02);
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+
+    label{
+      font-size:.9rem; color: var(--text-muted);
+    }
+
+    input[type="time"], input[type="text"]{
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s, transform .05s;
+    }
+    input::placeholder{ color: #808a9a }
+    input:focus{
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px var(--ring);
+    }
+    input.error{
+      border-color: var(--danger);
+      box-shadow: 0 0 0 4px rgba(239,68,68,.18);
+    }
+
+    .actions{
+      display:flex; gap:12px; align-items:center; justify-content:flex-end;
+      padding-top: 4px;
+    }
+
+    button{
+      appearance:none; border:0; cursor:pointer;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: #0a101a;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-strong) 100%);
+      box-shadow:
+        0 6px 16px rgba(34, 211, 238, .28),
+        inset 0 1px 0 rgba(255,255,255,.45);
+      transition: transform .06s ease, filter .2s ease, box-shadow .2s ease;
+    }
+    button:hover{ filter: brightness(1.03) }
+    button:active{ transform: translateY(1px) scale(.998) }
+
+    .btn-secondary{
+      background: linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.06));
+      color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .result{
+      margin-top: 10px;
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      background:
+        linear-gradient(180deg, rgba(34,211,238,.07), rgba(167,139,250,.07)),
+        rgba(255,255,255,.02);
+      border: 1px dashed rgba(255,255,255,.12);
+      color: var(--text);
+      min-height: 54px;
+      display:flex; align-items:center; justify-content:space-between; gap: 12px;
+    }
+    .result__left{
+      display:flex; align-items:center; gap:10px; color: var(--text-muted)
+    }
+    .pill{
+      font-size:.8rem; font-weight:700; letter-spacing:.3px;
+      padding: 6px 10px; border-radius: 999px;
+      background: rgba(34,211,238,.15);
+      color: var(--primary);
+      border: 1px solid rgba(34,211,238,.35);
+      white-space: nowrap;
+    }
+
+    /* Tooltip acessível simples para labels */
+    .hint{
+      font-size:.8rem; color: var(--text-muted);
+    }
+
+    /* Scrollbar temática (webkit) */
+    ::-webkit-scrollbar{ width:10px; height:10px }
+    ::-webkit-scrollbar-track{ background: #0a0f1e }
+    ::-webkit-scrollbar-thumb{
+      background: linear-gradient(180deg, var(--accent), var(--primary));
+      border-radius: 20px;
+    }
+
+    /* Estado de formulário desabilitado (se quiser usar) */
+    .is-loading{
+      opacity:.7; pointer-events:none; filter: saturate(.6);
+    }
+  </style>
+</head>
+<body>
+
+  <form id="formHorarios" class="card" action="javascript:void(0)">
+    <div class="card__header">
+      <h1 class="title"><span class="dot"></span>Calculadora de Horas</h1>
+      <p class="subtitle">Informe seus horários para calcular o total trabalhado (manhã e tarde, por exemplo).</p>
+    </div>
+
+    <div class="card__body">
+      <div class="row">
+        <div class="field">
+          <label for="entrada1">Hora de Entrada (Período 1)</label>
+          <input id="entrada1" name="entrada1" type="time" placeholder="08:00" inputmode="numeric" />
+        </div>
+        <div class="field">
+          <label for="saida1">Hora de Saída (Período 1)</label>
+          <input id="saida1" name="saida1" type="time" placeholder="12:00" inputmode="numeric" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="entrada2">Hora de Entrada (Período 2)</label>
+          <input id="entrada2" name="entrada2" type="time" placeholder="14:00" inputmode="numeric" />
+        </div>
+        <div class="field">
+          <label for="saida2">Hora de Saída (Período 2)</label>
+          <input id="saida2" name="saida2" type="time" placeholder="18:00" inputmode="numeric" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-secondary" type="reset">Limpar</button>
+        <button type="submit" onclick="calcular(event)">Calcular</button>
+      </div>
+
+      <div id="resposta" class="result" aria-live="polite">
+        <div class="result__left">
+          <span class="pill">Resultado</span>
+          <span>Informe os horários e clique em <strong>Calcular</strong>.</span>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <script src="index.js"></script>
+</body>
+</html>
